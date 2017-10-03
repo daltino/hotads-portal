@@ -11,7 +11,7 @@
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
 
         <!-- Styles -->
-        <link href="{{asset ('boostrap/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css">
+        <link href="{{asset ('bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css">
         <link href="{{asset ('css/core.css')}}" rel="stylesheet" type="text/css">
         <link href="{{asset ('css/components.css')}}" rel="stylesheet" type="text/css">
         <link href="{{asset ('css/icons.css')}}" rel="stylesheet" type="text/css">
@@ -54,12 +54,12 @@
                                     {{ csrf_field() }}
                                     <div class="form-group ">
                                         <div class="col-xs-12">
-                                            <input class="form-control" type="text" name="USERNAME" required="" placeholder="Username">
+                                            <input class="form-control" type="text" name="email" required="" placeholder="Email Address">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <div class="col-xs-12">
-                                            <input class="form-control" type="password" name="PASSWORD" required="" placeholder="Password">
+                                            <input class="form-control" type="password" name="password" required="" placeholder="Password">
                                         </div>
                                     </div>
                                     <div class="form-group text-center m-t-20">
@@ -73,7 +73,7 @@
                                         </div>
                                         <br/><br/>
                                         <div class="col-sm-12">
-                                            <a href="{{ url('') }}" class="text-dark"><i class="fa fa-unlock m-r-5 btn btn-info"></i> Lost your password?</a>
+                                            <a href="{{ url('/auth/reset') }}" class="text-dark"><i class="fa fa-unlock m-r-5 btn btn-info"></i> Lost your password?</a>
                                         </div>
                                     </div>
                                 </form>
@@ -91,7 +91,6 @@
     </body>
     <script src="{{ asset('js/jquery-2.1.0.min.js') }}"></script>
     <script src="{{ asset('bootstrap/js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('js/detect.js') }}"></script>
     <script src="{{ asset('js/fastclick.js') }}"></script>
     <script src="{{ asset('js/jquery.slimscroll.js') }}"></script>
@@ -101,7 +100,7 @@
     <script src="{{ asset('js/jquery.nicescroll.js') }}"></script>
     <script src="{{ asset('js/jquery.scrollTo.min.js') }}"></script>
     <script src="{{ asset('js/jquery.core.js') }}"></script>
-    <script src="{{ asset('plugins/notifyjs/dist/notify.min.js') }}"></script>
-    <script src="{{ asset('plugins/notifications/notify-metro.js') }}"></script>
+    {{--<script src="{{ asset('plugins/notifyjs/dist/notify.min.js') }}"></script>--}}
+    {{--<script src="{{ asset('plugins/notifications/notify-metro.js') }}"></script>--}}
     <script src="{{ asset('js/welcome.js') }}"></script>
 </html>

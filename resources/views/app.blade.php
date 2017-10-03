@@ -6,7 +6,13 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Hotads</title>
 	<link rel="shortcut icon" href="{{ asset('img/favicon.ico') }}">
-	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+	<link href="{{asset ('bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css">
+	<link href="{{asset ('css/core.css')}}" rel="stylesheet" type="text/css">
+	<link href="{{asset ('css/components.css')}}" rel="stylesheet" type="text/css">
+	<link href="{{asset ('css/icons.css')}}" rel="stylesheet" type="text/css">
+	<link href="{{asset ('css/pages.css')}}" rel="stylesheet" type="text/css">
+	<link href="{{asset ('css/app.css')}}" rel="stylesheet" type="text/css">
+	<link href="{{asset ('css/welcome.css')}}" rel="stylesheet" type="text/css">
 
 	<!-- Fonts -->
 	<link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
@@ -62,7 +68,7 @@
 	@yield('content')
 
 	<!-- Scripts -->
-	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-	<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	<script src="{{ asset('js/jquery-2.1.0.min.js') }}"></script>
+	<script src="{{ asset('bootstrap/js/bootstrap.min.js') }}"></script>
 </body>
 </html>

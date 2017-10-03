@@ -13,5 +13,13 @@
 
 Route::get('/', function () { return view('welcome'); });
 Route::get('/auth/register', 'Auth\RegisterController@showRegister');
+Route::get('/auth/reset', 'Auth\RegisterController@showReset');
 Route::get('/auth/account-created', 'Auth\RegisterController@createSuccess');
+Route::post('/password/reset',array('uses' => 'Auth\RegisterController@doReset'));
 Route::post('/dologin',array('uses' => 'LoginController@doLogin'));
+
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/campaign/create-ad', 'CampaignController@createAd');
+    Route::post('/campaign/create-ad', 'CampaignController@submitAd');
+    Route::get('/campaign/show-ad', 'CampaignController@showAd');
+});

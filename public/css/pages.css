@@ -1717,6 +1717,8 @@ File: Pages
   margin: 5% auto;
   position: relative;
   width: 420px;
+  height:500px;
+  overflow: scroll;
 }
 .wrapper-page .card-box {
   border: 1px solid rgba(54, 64, 74, 0.1);

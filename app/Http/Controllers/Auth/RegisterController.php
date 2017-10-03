@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use App\Country;
 use App\Helpers;
+use Symfony\Component\HttpFoundation\Request;
 
 class RegisterController extends Controller
 {
@@ -50,10 +51,12 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'firstname' => 'required|max:255',
-            'lastname' => 'required|max:255',
+            'firstname' => 'required|max:255|min:2',
+            'lastname' => 'required|max:255|min:2',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|min:6|confirmed',
+            'companyname' => 'required|min:2',
+            'country_id' => 'required'
         ]);
     }
 
@@ -80,6 +83,10 @@ class RegisterController extends Controller
         return view('auth.register')->with($data);
     }
 
+    public function showReset(){
+        return view('auth.reset');
+    }
+
     public function createSuccess(){
         return view('auth.account-created');
     }
@@ -103,7 +110,7 @@ class RegisterController extends Controller
         } else {
 
             // check for unique email
-            $user = User::where('email',Request::get('email'))->first();
+            $user = User::where('email','=',Request::get('email'))->first();
 
             if($user === null) {
                 // create our user data for the authentication
@@ -157,6 +164,30 @@ class RegisterController extends Controller
                 return view('auth.register')->with($data);
             }
 
+        }
+    }
+
+    public function doReset(){
+        $rules = array(
+            'email' => 'required|email|max:255|unique:users',
+        );
+
+        // run the validation rules on the Requests from the form
+        $validator = Validator::make(Request::all(), $rules);
+
+        // if the validator fails, redirect back to the form
+        if ($validator->fails()) {
+            return Redirect::to('password/reset')
+                ->withErrors($validator); // send back all errors to the login form
+        } else {
+            //find user
+            $user = User::where('email','=',Request::get('email'))->get()->first();
+            if($user != null){
+
+            }else{
+                $data['errors'] = "Cannot find user record";
+                return view('auth.reset')->with($data);
+            }
         }
     }
 }

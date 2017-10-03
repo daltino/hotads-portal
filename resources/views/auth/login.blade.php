@@ -21,7 +21,7 @@
 							<div class="panel-body">
 								@if (isset($errors) && count($errors) > 0)
 									<div class="alert alert-danger">
-										<strong>Whoops!</strong> There were some problems with your input.<br><br>
+										<strong>Sorry!</strong> There were some problems with your input.<br><br>
 										<ul>
 											@foreach ($errors->all() as $error)
 												<li>{{ $error }}</li>
@@ -61,7 +61,7 @@
 										<div class="col-md-6 col-md-offset-4">
 											<button type="submit" class="btn btn-primary">Login</button>
 
-											<a class="btn btn-link" href="{{ url('/password/email') }}">Forgot Your Password?</a>
+											<a class="btn btn-link" href="{{ url('/auth/reset') }}">Forgot Your Password?</a>
 										</div>
 									</div>
 								</form>
@@ -72,5 +72,6 @@
 			</div>
 		</div>
 	</div>
+	<script src="{{ asset('js/jquery-2.1.0.min.js') }}"></script>
 	<script src="{{ asset('js/welcome.js') }}"></script>
 @endsection

@@ -2154,7 +2154,8 @@ body.fixed-left .side-menu.left {
 }
 
 #formdiv{
-    position:absolute;
-    top: 70px;
-    left:34%;
+  margin: auto auto;
+  overflow: auto;
 }
+
+#wrapper-page
