@@ -17,7 +17,7 @@ class Campaign extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'locations','graphicad1','graphicad2','videoad','connections'
+        'locations','user_id','graphicad1','graphicad2','videoad','connections','used_connections', 'today_connections','created_at'
     ];
 
     /**

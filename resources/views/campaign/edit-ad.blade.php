@@ -6,20 +6,20 @@
             <div class="col-md-8 col-md-offset-1">
                 <h3>Create Campaign</h3>
                 <br/><br/>
-                <form class="form-horizontal" enctype="multipart/form-data" role="form" method="POST" action="{{ url('/campaign/create-ad') }}">
+                <form class="form-horizontal" enctype="multipart/form-data" role="form" method="POST" action="{{ url('/campaign/update-ad') }}">
                     {!! csrf_field() !!}
 
                     <div class="form-group">
                         <label class="col-md-4 control-label">Choose Location*</label>
                         <div class="col-md-6">
                             <select name="locations" id="locations" class="select2-container-multi">
-                                <option value="Art Cafe">Art Cafe, VI, Lagos</option>
-                                <option value="PH Mall">Port Harcourt Mall</option>
-                                <option value="Abuja Airport">Abuja Airport</option>
-                                <option>Dolphin Highrise, Ikoyi, Lagos</option>
-                                <option value="Farm City">Farm City, Lekki, Lagos</option>
-                                <option>Lekki Library</option>
-                                <option value="Marco Polo">Marco Polo, Lekki, Lagos</option>
+                                <option value="Art Cafe" selected="{{ ($campaign->location == 'Art Cafe') ? 'selected' : '' }}">Art Cafe, VI, Lagos</option>
+                                <option value="PH Mall" selected="{{ ($campaign->location == 'PH Mall') ? 'selected' : '' }}">Port Harcourt Mall</option>
+                                <option value="Abuja Airport" selected="{{ ($campaign->location == 'Abuja Airport') ? 'selected' : '' }}">Abuja Airport</option>
+                                <option value="Dolphin Highrise" selected="{{ ($campaign->location == 'Dolphin Highrise') ? 'selected' : '' }}">Dolphin Highrise, Ikoyi, Lagos</option>
+                                <option value="Farm City" selected="{{ ($campaign->location == 'Farm City') ? 'selected' : '' }}">Farm City, Lekki, Lagos</option>
+                                <option value="Lekki Library" selected="{{ ($campaign->location == 'Lekki Library') ? 'selected' : '' }}">Lekki Library</option>
+                                <option value="Marco Polo" selected="{{ ($campaign->location == 'Marco Polo') ? 'selected' : '' }}">Marco Polo, Lekki, Lagos</option>
                             </select>
                         </div>
                     </div>
@@ -28,6 +28,7 @@
                         <label class="col-md-4 control-label">Upload Graphic Image 1</label>
                         <div class="col-md-6">
                             <input type="file" class="form-control" id="graphicad1" name="graphicad1">
+                            <img src="{{ url($campaign->graphicad1) }}" class="inputImages" alt="Graphic Ad 1" />
                         </div>
                     </div>
 
@@ -35,13 +36,14 @@
                         <label class="col-md-4 control-label">Upload Graphic Image 2</label>
                         <div class="col-md-6">
                             <input type="file" class="form-control" id="graphicad2" name="graphicad2">
+                            <img src="{{ url($campaign->graphicad2) }}" class="inputImages" alt="Graphic Ad 2" />
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="col-md-4 control-label">Video Link</label>
                         <div class="col-md-6">
-                            <input type="text" class="form-control" name="videoad">
+                            <input type="text" class="form-control" name="videoad" value="{{ $campaign->videolink }}" />
                         </div>
                     </div>
 

@@ -46,10 +46,9 @@
                     <div class="wrapper-page">
                         <div class=" card-box">
                             <div class="panel-heading">
-                                <h3 class="text-center"><strong class="text-primary"><img src="{{ asset('img/logo-hor.png') }}" alt="Hotads" style="height:50px;" /></strong> </h3>
+                                <h3 class="text-center"><strong class="text-primary"><img src="{{ asset('img/logo-small.jpg') }}" alt="Hotads" style="height:100px;" /></strong> </h3>
                             </div>
                             <div class="panel-body">
-                                <h5 style="text-align: center; font-family: 'Open Sans','lucida grande','Segoe UI',arial,verdana,'lucida sans unicode',tahoma,sans-serif;">Sign In</h5>
                                 <form class="form-horizontal m-t-20" action="{{ url('/auth/login') }}" method="post">
                                     {{ csrf_field() }}
                                     <div class="form-group ">

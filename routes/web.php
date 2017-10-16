@@ -21,5 +21,8 @@ Route::post('/dologin',array('uses' => 'LoginController@doLogin'));
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/campaign/create-ad', 'CampaignController@createAd');
     Route::post('/campaign/create-ad', 'CampaignController@submitAd');
+    Route::post('/campaign/update-ad', 'CampaignController@updateAd');
     Route::get('/campaign/show-ad', 'CampaignController@showAd');
+    Route::get('/campaign/delete-ad/{cid}', 'CampaignController@deleteAd');
+    Route::get('/support', 'CampaignController@contactSupport');
 });

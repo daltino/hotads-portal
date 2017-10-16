@@ -7,11 +7,13 @@
 	<title>Hotads</title>
 	<link rel="shortcut icon" href="{{ asset('img/favicon.ico') }}">
 	<link href="{{asset ('bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css">
+	<link href="{{asset ('lightbox2-master/dist/css/lightbox.min.css')}}" rel="stylesheet" type="text/css">
 	<link href="{{asset ('css/core.css')}}" rel="stylesheet" type="text/css">
 	<link href="{{asset ('css/components.css')}}" rel="stylesheet" type="text/css">
 	<link href="{{asset ('css/icons.css')}}" rel="stylesheet" type="text/css">
 	<link href="{{asset ('css/pages.css')}}" rel="stylesheet" type="text/css">
 	<link href="{{asset ('css/app.css')}}" rel="stylesheet" type="text/css">
+	<link href="{{asset ('css/custom.css')}}" rel="stylesheet" type="text/css">
 	<link href="{{asset ('css/welcome.css')}}" rel="stylesheet" type="text/css">
 
 	<!-- Fonts -->
@@ -34,8 +36,8 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="{{ url('/') }}">
-					<img src="{{ asset('img/logo-n1.png') }}" style="height: 35px; margin-top: -7px;" alt="Hotads" />
+				<a class="navbar-brand" href="{{ url('home') }}">
+					<img src="{{ asset('img/logo-small-hor.jpg') }}" style="height: 40px; margin-top: -7px;" alt="Hotads" />
 				</a>
 			</div>
 
@@ -54,7 +56,7 @@
 						@endif
 					@else
 						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ auth()->user()->firstname }} {{ auth()->user()->lastname }} <span class="caret"></span></a>
+							<a href="#" class="dropdown-toggle" style="color: black;" data-toggle="dropdown" role="button" aria-expanded="false">{{ auth()->user()->firstname }} {{ auth()->user()->lastname }} <span class="caret"></span></a>
 							<ul class="dropdown-menu" role="menu">
 								<li><a href="{{ url('/auth/logout') }}">Logout</a></li>
 							</ul>
@@ -70,5 +72,6 @@
 	<!-- Scripts -->
 	<script src="{{ asset('js/jquery-2.1.0.min.js') }}"></script>
 	<script src="{{ asset('bootstrap/js/bootstrap.min.js') }}"></script>
+	<script src="{{ asset('lightbox2-master/dist/js/lightbox.min.js') }}"></script>
 </body>
 </html>
