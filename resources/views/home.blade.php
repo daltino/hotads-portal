@@ -5,12 +5,13 @@
 	<div class="row">
 		<div class="col-md-8 col-md-offset-1">
 			<div class="panel panel-default">
-				<div class="panel-heading">Live Ad</div>
+				<div class="panel-heading m-l-5">Live Ad</div>
 
 				<div class="panel-body">
 					@if(count($campaigns) > 0)
 						@foreach($campaigns as $campaign)
-							Now Showing at: <strong>{{ $campaign->locations }}</strong>
+							Now Showing at: <strong style="color: #007ee5;">{{ $campaign->locations }}</strong> |
+							WiFi Name: <strong style="color: #007ee5">{{ $campaign->ssid }}</strong>
 							<iframe width="716" height="480" src="{{$campaign->livelink}}" frameborder="0" allowfullscreen></iframe>
 							<br/><br/>
 						@endforeach
@@ -30,7 +31,7 @@
 				<div class="panel-heading">View Your Ads Stats</div>
 
 				<div class="panel-body">
-					<a href="{{ url('/campaign/show-ad') }}" class="btn btn-success btn-block">Show My Ads</a>
+					<a href="{{ url('/campaign/show-ad') }}" class="btn btn-success btn-block">Show My Stats</a>
 				</div>
 			</div>
 			<div class="panel panel-default">

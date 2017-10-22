@@ -26,4 +26,5 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/campaign/show-ad', 'CampaignController@showAd');
     Route::get('/campaign/delete-ad/{cid}', 'CampaignController@deleteAd');
     Route::get('/support', 'CampaignController@contactSupport');
+    Route::post('/contact-support', 'CampaignController@submitContactSupport');
 });

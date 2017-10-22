@@ -22,6 +22,7 @@ class CreateCampaign extends Migration
             $table->longText('graphicad2')->nullable();
             $table->longText('videoad')->nullable();
             $table->longText('livelink')->nullable();
+            $table->string('ssid')->nullable();
             $table->integer('connections');
             $table->integer('used_connections');
             $table->integer('today_connections');

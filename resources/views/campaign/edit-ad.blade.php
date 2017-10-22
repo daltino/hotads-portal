@@ -45,9 +45,14 @@
                     <div class="form-group">
                         <label class="col-md-4 control-label">Video Link</label>
                         <div class="col-md-6">
-                            <input type="text" class="form-control" name="videoad" value="{{ $campaign->videolink }}" />
-                            <strong>Current Video Link:</strong><br/>
-                            {{ $campaign->videoad }}
+                            <input type="text" class="form-control" name="videoad" value="{{ $campaign->videoad }}" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">WiFi Name (SSID)</label>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" name="ssid" value="{{ $campaign->ssid }}">
                         </div>
                     </div>
 
@@ -70,7 +75,7 @@
                     <div class="panel-heading">View Your Ads Stats</div>
 
                     <div class="panel-body">
-                        <a href="{{ url('/campaign/show-ad') }}" class="btn btn-success btn-block">Show My Ads</a>
+                        <a href="{{ url('/campaign/show-ad') }}" class="btn btn-success btn-block">Show My Stats</a>
                     </div>
                 </div>
                 <div class="panel panel-default">

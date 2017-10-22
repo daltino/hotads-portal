@@ -46,6 +46,13 @@
                     </div>
 
                     <div class="form-group">
+                        <label class="col-md-4 control-label">WiFi Name (SSID)</label>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" name="ssid">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
                         <div class="col-md-6 col-md-offset-4">
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </div>
@@ -64,7 +71,7 @@
                     <div class="panel-heading">View Your Ads Stats</div>
 
                     <div class="panel-body">
-                        <a href="{{ url('/campaign/show-ad') }}" class="btn btn-success btn-block">Show My Ads</a>
+                        <a href="{{ url('/campaign/show-ad') }}" class="btn btn-success btn-block">Show My Stats</a>
                     </div>
                 </div>
                 <div class="panel panel-default">

@@ -14,6 +14,7 @@
                         <th>Graphic Ad 1</th>
                         <th>Graphic Ad 2</th>
                         <th>Video Ad</th>
+                        <th>WiFi Name</th>
                         <th>Impressions (CPM)</th>
                         <th>Actions</th>
                     </tr>
@@ -38,6 +39,7 @@
                                             No video
                                         @endif
                                     </td>
+                                    <td>{{ $campaign->ssid }}</td>
                                     <td> Today: <strong>{{ $campaign->today_connections }}</strong><br/>Total: <strong>{{ $campaign->used_connections }}</strong></td>
                                     <td>
                                         @if(auth()->user()->role == 'ADMIN')

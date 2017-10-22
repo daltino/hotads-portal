@@ -54,7 +54,13 @@ class CampaignController extends Controller
                 $campaigns = Campaign::where('user_id',auth()->user()->id)->get();
 
                 //mail admin about new campaign
+                $user = auth()->user();
 
+                Mail::send('emails.campaign', ['user' => $user, 'campaign'=>$campaign], function ($m) use ($user,$campaign) {
+                    $m->from('noreply@hotads.co', 'Hotads');
+
+                    $m->to('info@hotads.co,whyte.dalton@hotads.co,daltino06@yahoo.com,tariah.kennedy@hotads.co,atamuno.florence@hotads.co,', 'Hotads Admin')->subject('New Campaign Request from ' . $user->firstname.' '.$user->lastname.' of '.$user->company_name);
+                });
 
                 return view('campaign.show-ad')->with('campaigns',$campaigns);
             } else {
@@ -228,9 +234,8 @@ class CampaignController extends Controller
             $campaign->graphicad1 = $data['graphicad1'];
             $campaign->graphicad2 = $data['graphicad2'];
             $campaign->videolink = $data['videolink'];
+            $campaign->ssid = $data['ssid'];
             $campaign->save();
-
-            //mail admin about new campaign
 
             $campaigns = Campaign::where('user_id',auth()->user()->id)->get();
             return view('campaign.show-ad')->with('campaigns',$campaigns);
@@ -248,5 +253,19 @@ class CampaignController extends Controller
     public function contactSupport()
     {
         return view('support');
+    }
+
+    // Function to post email of support form
+    public function submitContactSupport(Request $request)
+    {
+        $data = $request->all();
+        $user = auth()->user();
+
+        Mail::send('emails.support', ['user' => $user, 'message'=>$data], function ($m) use ($user,$data) {
+            $m->from('noreply@hotads.co', 'Hotads');
+
+            $m->to('info@hotads.co,whyte.dalton@hotads.co,daltino06@yahoo.com,tariah.kennedy@hotads.co,atamuno.florence@hotads.co,', 'Hotads Admin')->subject('Support Request from ' . $user->firstname.' '.$user->lastname.' of '.$user->company_name);
+        });
+
     }
 }
