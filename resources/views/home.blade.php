@@ -8,7 +8,13 @@
 				<div class="panel-heading">Live Ad</div>
 
 				<div class="panel-body">
-					<iframe width="716" height="480" src="https://www.youtube.com/embed/videoseries?list=PLZYCEy0R3lipWrnLEiNM9n_PS5Lktrxkj" frameborder="0" allowfullscreen></iframe>
+					@if(count($campaigns) > 0)
+						@foreach($campaigns as $campaign)
+							Now Showing at: <strong>{{ $campaign->locations }}</strong>
+							<iframe width="716" height="480" src="{{$campaign->livelink}}" frameborder="0" allowfullscreen></iframe>
+							<br/><br/>
+						@endforeach
+					@endif
 				</div>
 			</div>
 		</div>
@@ -21,7 +27,7 @@
 				</div>
 			</div>
 			<div class="panel panel-default">
-				<div class="panel-heading">View Your Ads</div>
+				<div class="panel-heading">View Your Ads Stats</div>
 
 				<div class="panel-body">
 					<a href="{{ url('/campaign/show-ad') }}" class="btn btn-success btn-block">Show My Ads</a>

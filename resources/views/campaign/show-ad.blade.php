@@ -40,8 +40,10 @@
                                     </td>
                                     <td> Today: <strong>{{ $campaign->today_connections }}</strong><br/>Total: <strong>{{ $campaign->used_connections }}</strong></td>
                                     <td>
-                                        <a href="{{ url('/campaign/edit-ad/'.$campaign->id) }}"><i class="fa fa-lg fa-edit"></i></a>
-                                        <a onclick="return window.confirm('Do you want to delete this ad?')" href="{{ url('/campaign/delete-ad/'.$campaign->id) }}"><i class="fa fa-lg fa-trash p-l-r-10"></i></a>
+                                        @if(auth()->user()->role == 'ADMIN')
+                                            <a href="{{ url('/campaign/edit-ad/'.$campaign->id) }}"><i class="fa fa-lg fa-edit"></i></a>
+                                            <a onclick="return window.confirm('Do you want to delete this ad?')" href="{{ url('/campaign/delete-ad/'.$campaign->id) }}"><i class="fa fa-lg fa-trash p-l-r-10"></i></a>
+                                        @endif
                                     </td>
                                 </tr>
                             @endforeach

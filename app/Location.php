@@ -5,11 +5,11 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Campaign extends Authenticatable
+class Location extends Authenticatable
 {
     use Notifiable;
 
-    protected $table = "campaign";
+    protected $table = "location";
 
     /**
      * The attributes that are mass assignable.
@@ -17,7 +17,7 @@ class Campaign extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'locations','user_id','graphicad1','graphicad2','videoad','livelink','connections','used_connections', 'today_connections','created_at'
+        'name','livelink','routerStatus','total_connections','created_at','updated_at'
     ];
 
     /**

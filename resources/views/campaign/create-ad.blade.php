@@ -61,7 +61,7 @@
                     </div>
                 </div>
                 <div class="panel panel-default">
-                    <div class="panel-heading">View Your Ads</div>
+                    <div class="panel-heading">View Your Ads Stats</div>
 
                     <div class="panel-body">
                         <a href="{{ url('/campaign/show-ad') }}" class="btn btn-success btn-block">Show My Ads</a>

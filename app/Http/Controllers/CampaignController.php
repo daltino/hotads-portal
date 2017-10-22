@@ -144,7 +144,7 @@ class CampaignController extends Controller
                 if($spot['name'] == $location){
                     //get customers
                     $spot_id = $spot['id'];
-                    $url = $root.'/locations/'.$spot['id'].'/transactions/mac?limit=1000&sort=-id';
+                    $url = $root.'/locations/'.$spot['id'].'/transactions/mac?limit=1500&sort=-id';
                     $chc = curl_init();
                     curl_setopt($chc, CURLOPT_URL, $url);
                     curl_setopt($chc, CURLOPT_HTTPHEADER, $headers);

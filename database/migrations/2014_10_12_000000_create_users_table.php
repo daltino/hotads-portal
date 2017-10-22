@@ -28,6 +28,7 @@ class CreateUsersTable extends Migration
             $table->integer('state_id')->unsigned()->default(0);
             $table->integer('country_id')->unsigned()->default(0);
             $table->string('hash')->nullable();
+            $table->enum('role', ['user', 'admin']);
             $table->rememberToken();
             $table->timestamps();
         });

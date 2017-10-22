@@ -56,7 +56,7 @@
 						@endif
 					@else
 						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" style="color: black;" data-toggle="dropdown" role="button" aria-expanded="false">{{ auth()->user()->firstname }} {{ auth()->user()->lastname }} <span class="caret"></span></a>
+							<a href="#" class="dropdown-toggle" style="color: black !important;" data-toggle="dropdown" role="button" aria-expanded="false">{{ auth()->user()->firstname }} {{ auth()->user()->lastname }} <span class="caret"></span></a>
 							<ul class="dropdown-menu" role="menu">
 								<li><a href="{{ url('/auth/logout') }}">Logout</a></li>
 							</ul>
@@ -72,6 +72,7 @@
 	<!-- Scripts -->
 	<script src="{{ asset('js/jquery-2.1.0.min.js') }}"></script>
 	<script src="{{ asset('bootstrap/js/bootstrap.min.js') }}"></script>
+	<script src="{{ asset('js/custom.js') }}"></script>
 	<script src="{{ asset('lightbox2-master/dist/js/lightbox.min.js') }}"></script>
 </body>
 </html>
