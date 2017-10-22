@@ -58,7 +58,7 @@
 
 						<div class="form-group">
 							<div class="col-md-4 col-md">
-								<a href="/auth/login" class="btn btn-block btn-warning">
+								<a href="{{ url('/auth/login') }}" class="btn btn-block btn-warning">
 									<i class="fa fa-arrow-left"></i> Login
 								</a>
 							</div>
