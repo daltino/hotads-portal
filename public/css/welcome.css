@@ -45,6 +45,10 @@ html, body {
     text-transform: uppercase;
 }
 
+.nav > li > a{
+    color: black !important;
+}
+
 .m-b-md {
     margin-bottom: 30px;
 }
@@ -93,4 +97,35 @@ html, body {
 }
 .video-container video.fillWidth {
     width: 100%;
+}
+
+/*small screen sizes*/
+@media (max-width: 360px) {
+    .video-container .filter {
+        display: none;
+    }
+}
+
+@media (max-width: 320px) {
+    .video-container .filter {
+        display: none;
+    }
+}
+
+@media (max-width: 479px) {
+    .video-container .filter {
+        display: none;
+    }
+}
+
+@media (max-width: 412px) {
+    .video-container .filter {
+        display: none;
+    }
+}
+
+@media (max-width: 720px) {
+    .video-container .filter {
+        display: none;
+    }
 }

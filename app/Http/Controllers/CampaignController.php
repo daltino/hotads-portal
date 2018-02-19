@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Location;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Validator;
 use App\Campaign;
@@ -150,41 +152,44 @@ class CampaignController extends Controller
                 if($spot['name'] == $location){
                     //get customers
                     $spot_id = $spot['id'];
-                    $url = $root.'/locations/'.$spot['id'].'/transactions/mac?limit=1500&sort=-id';
-                    $chc = curl_init();
-                    curl_setopt($chc, CURLOPT_URL, $url);
-                    curl_setopt($chc, CURLOPT_HTTPHEADER, $headers);
-                    curl_setopt($chc, CURLOPT_TIMEOUT, 30);
-                    curl_setopt($chc, CURLOPT_RETURNTRANSFER, true);
-                    curl_setopt($chc, CURLOPT_VERBOSE, true);
-                    $responsec = curl_exec($chc);
-                    $infoc = curl_getinfo($chc);
-                    if($infoc['http_code'] == 200){
-                        $jsonc = json_decode($responsec);
-                        $today = date('Y-m-d');
-                        foreach($jsonc->items as $mact){
-                            if(strtotime($mact->action_date_gmt) > strtotime('-1 days')){
-                                $todayconn++;
+                    $i = 0;
+                    while($i < 3){
+                        $offset = $i*1000;
+                        $url = $root.'/locations/'.$spot['id'].'/transactions/mac?limit=1000&offset='.$offset.'&sort=-id';
+                        $chc = curl_init();
+                        curl_setopt($chc, CURLOPT_URL, $url);
+                        curl_setopt($chc, CURLOPT_HTTPHEADER, $headers);
+                        curl_setopt($chc, CURLOPT_TIMEOUT, 30);
+                        curl_setopt($chc, CURLOPT_RETURNTRANSFER, true);
+                        curl_setopt($chc, CURLOPT_VERBOSE, true);
+                        $responsec = curl_exec($chc);
+                        $infoc = curl_getinfo($chc);
+                        if($infoc['http_code'] == 200){
+                            $jsonc = json_decode($responsec);
+                            $today = date('Y-m-d');
+                            foreach($jsonc->items as $mact){
+                                if(strtotime($mact->action_date_gmt) > strtotime('midnight')){
+                                    $todayconn++;
+                                }
+                            }
+                            foreach($jsonc->items as $mact){
+                                if(strtotime($mact->action_date_gmt) > strtotime($startDate)){
+                                    $usedconn++;
+                                }
                             }
                         }
-                        foreach($jsonc->items as $mact){
-                            if(strtotime($mact->action_date_gmt) > strtotime($startDate)){
-                                $usedconn++;
-                            }
+                        if($spot['name'] == 'PH Mall' || $spot['name'] == 'GNC PH'){
+                            $phn = 'PH Mall';
+                            $ph += $todayconn;
+                            $pht += $jsonc->metadata->total_count;
+                            if($phdone == 0)
+                                $phdone++;
                         }
+                        else{
+                        }
+                        curl_close($chc);
+                        $i++;
                     }
-                    if($spot['name'] == 'PH Mall' || $spot['name'] == 'GNC PH'){
-                        $phn = 'PH Mall';
-                        $ph += $todayconn;
-                        $pht += $jsonc->metadata->total_count;
-                        if($phdone == 0)
-                            $phdone++;
-                    }
-                    else{
-
-
-                    }
-                    curl_close($chc);
                 }
             }
         }
@@ -192,15 +197,63 @@ class CampaignController extends Controller
         return [$todayconn,$usedconn,$ph,$pht];
     }
 
+    // Function to call the hotspotsystem.com API for subscribers
+    public function getSubscribers($location,$startDate,$endDate){
+        $startDate = $startDate->toDateString();
+        $endDate = $endDate->toDateString();
+        $api_key = '3eca0f02fbf59a1667854d77b858cd1e';
+        $root = 'https://api.hotspotsystem.com/v2.0';
+        $url = $root . '/locations/'.$location.'/customers?limit=1000&sort=-id';
+        $headers = array(
+            'sn-apikey: ' . $api_key
+        );
+
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 30);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_VERBOSE, true);
+
+        $response = curl_exec($ch);
+        $info = curl_getinfo($ch);
+        $users = array();
+
+        if ($info['http_code'] === 200) {
+            // Do something with the response
+            $json = json_decode($response, true);
+            foreach($json['items'] as $subscriber){
+                if($subscriber['email']){
+                    array_push($users,$subscriber);
+                }
+            }
+        }
+        curl_close($ch);
+        return $users;
+    }
+
     // Function to list all adverts
     public function showAd(){
         $campaigns = Campaign::where('user_id',auth()->user()->id)->get();
+        $grandtotal = 0;
         foreach($campaigns as $campaign){
-            $campaign->used_connections = $this->getUsedConnections($campaign->locations,$campaign->created_at)[1];
-            $campaign->today_connections = $this->getUsedConnections($campaign->locations,$campaign->created_at)[0];
+            $usedConns = $this->getUsedConnections($campaign->locations,$campaign->created_at);
+            $campaign->used_connections = $usedConns[1];
+            $grandtotal += $usedConns[1];
+            $campaign->today_connections = $usedConns[0];
             $campaign->save();
         }
-        return view('campaign.show-ad')->with('campaigns',$campaigns);
+        return view('campaign.show-ad',compact('campaigns','grandtotal'));
+    }
+
+    // Function to list users for a specific hotspot location
+    public function showUsers($cid){
+        $campaign = Campaign::find($cid);
+        $location = Location::where('name',$campaign->locations)->first();
+        $starDate = Carbon::now();
+        $endDate = Carbon::now();
+        $users = $this->getSubscribers($location->hsID,$starDate,$endDate);
+        return view('campaign.show-users',compact('users','location'));
     }
 
     public function showEditAd($cid)

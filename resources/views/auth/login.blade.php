@@ -5,7 +5,7 @@
 	<link href="{{asset ('css/auth.css')}}" rel="stylesheet" type="text/css">
 	<div class="homepage-hero-module">
 		<div class="video-container">
-			<div class="filter"></div>
+			<div class="filter hidden-xs"></div>
 			<video autoplay loop class="fillWidth">
 				<source src="{{ asset('cover/ground-zero/MP4/Ground-Zero.mp4') }}" type="video/mp4" />Your browser does not support the video tag. I suggest you upgrade your browser.
 				<source src="{{ asset('cover/ground-zero/WEBM/Ground-Zero.webm') }}" type="video/webm" />Your browser does not support the video tag. I suggest you upgrade your browser.

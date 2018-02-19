@@ -12,7 +12,7 @@
 						@foreach($campaigns as $campaign)
 							Now Showing at: <strong style="color: #007ee5;">{{ $campaign->locations }}</strong> |
 							WiFi Name: <strong style="color: #007ee5">{{ $campaign->ssid }}</strong>
-							<iframe width="716" height="480" src="{{$campaign->livelink}}" frameborder="0" allowfullscreen></iframe>
+							<iframe style="width: 100%;" height="480" src="{{$campaign->livelink}}" frameborder="0" allowfullscreen></iframe>
 							<br/><br/>
 						@endforeach
 					@endif

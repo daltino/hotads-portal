@@ -7,5 +7,6 @@ function init(){
     $('.collapse').collapse();
     $('.collapse').on('hide.bs.collapse', function () {
         console.log('working');
-    })
+    });
+    $('#userTable').DataTable();
 }

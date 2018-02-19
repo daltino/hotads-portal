@@ -17,7 +17,7 @@ class Location extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name','livelink','routerStatus','total_connections','created_at','updated_at'
+        'name','livelink','routerStatus','total_connections','created_at','updated_at','hsID'
     ];
 
     /**

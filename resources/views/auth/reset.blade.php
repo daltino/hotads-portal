@@ -58,16 +58,13 @@
 
 						<div class="form-group">
 							<div class="col-md-4 col-md">
-								<a href="{{ url('/auth/login') }}" class="btn btn-block btn-warning">
+								<a href="{{ url('/auth/login') }}" class="btn btn-warning">
 									<i class="fa fa-arrow-left"></i> Login
 								</a>
-							</div>
-							<div class="col-md-3">
-								<button type="submit" class="btn btn-primary">
+								<button type="submit" class="btn btn-primary m-l-10">
 									<i class="fa fa-recycle"></i> Reset Password
 								</button>
 							</div>
-
 						</div>
 					</form>
 				</div>

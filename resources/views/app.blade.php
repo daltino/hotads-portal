@@ -15,6 +15,7 @@
 	<link href="{{asset ('css/app.css')}}" rel="stylesheet" type="text/css">
 	<link href="{{asset ('css/custom.css')}}" rel="stylesheet" type="text/css">
 	<link href="{{asset ('css/welcome.css')}}" rel="stylesheet" type="text/css">
+	<link href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
 
 	<!-- Fonts -->
 	<link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
@@ -42,9 +43,13 @@
 			</div>
 
 			<div class="collapse navbar-collapse" id="navbar">
-				{{--<ul class="nav navbar-nav">--}}
-					{{--<li><a href="{{ url('/') }}">Home</a></li>--}}
-				{{--</ul>--}}
+				<ul class="nav navbar-nav">
+					@if(!auth()->guest())
+						<li><a href="{{ url('/campaign/create-ad') }}">Create Ad</a></li>
+						<li><a href="{{ url('/campaign/show-ad') }}">Show My Stats</a></li>
+						<li><a href="{{ url('/support') }}">Contact Support</a></li>
+					@endif
+				</ul>
 
 				<ul class="nav navbar-nav navbar-right">
 					@if(auth()->guest())
@@ -74,5 +79,6 @@
 	<script src="{{ asset('bootstrap/js/bootstrap.min.js') }}"></script>
 	<script src="{{ asset('js/custom.js') }}"></script>
 	<script src="{{ asset('lightbox2-master/dist/js/lightbox.min.js') }}"></script>
+	<script src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 </body>
 </html>

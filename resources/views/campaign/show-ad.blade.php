@@ -11,9 +11,9 @@
                     <tr>
                         <th>#</th>
                         <th>Location</th>
-                        <th>Graphic Ad 1</th>
-                        <th>Graphic Ad 2</th>
-                        <th>Video Ad</th>
+                        <th class="hidden-xs">Graphic Ad 1</th>
+                        <th class="hidden-xs">Graphic Ad 2</th>
+                        <th class="hidden-xs">Video Ad</th>
                         <th>WiFi Name</th>
                         <th>Impressions (CPM)</th>
                         <th>Actions</th>
@@ -26,13 +26,13 @@
                                 <tr  class="idea_row">
                                     <td></td>
                                     <td class="">{{ $campaign->locations }}</td>
-                                    <td>
+                                    <td class="hidden-xs">
                                         <a href="{{ url($campaign->graphicad1) }}" data-lightbox="image-1" data-title="Graphic Image 1"><img src="{{ url($campaign->graphicad1) }}" alt="Graphic Ad 1" /></a>
                                     </td>
-                                    <td>
+                                    <td class="hidden-xs">
                                         <a href="{{ url($campaign->graphicad2) }}" data-lightbox="image-2" data-title="Graphic Image 2"><img src="{{ url($campaign->graphicad2) }}" alt="Graphic Ad 2" /></a>
                                     </td>
-                                    <td>
+                                    <td class="hidden-xs">
                                         @if($campaign->videolink != "")
                                             <a href="{{ url($campaign->videolink) }}" alt="Video Ad" />Play Video</a>
                                         @else
@@ -45,10 +45,27 @@
                                         @if(auth()->user()->role == 'ADMIN')
                                             <a href="{{ url('/campaign/edit-ad/'.$campaign->id) }}"><i class="fa fa-lg fa-edit"></i></a>
                                             <a onclick="return window.confirm('Do you want to delete this ad?')" href="{{ url('/campaign/delete-ad/'.$campaign->id) }}"><i class="fa fa-lg fa-trash p-l-r-10"></i></a>
+                                        @else
+                                            <a href="{{ url('/campaign/show-users/'.$campaign->id) }}"><i class="fa fa-lg fa-users"></i> Users</a>
                                         @endif
                                     </td>
                                 </tr>
                             @endforeach
+                                <tr  class="idea_row">
+                                    <td></td>
+                                    <td class="hidden-xs"></td>
+                                    <td class="hidden-xs"></td>
+                                    <td class="hidden-xs"></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></strong><br/>Grand Total: <strong>{{ $grandtotal }}</strong></td>
+                                    <td>
+                                        @if(auth()->user()->role == 'ADMIN')
+                                            <a href="{{ url('/campaign/edit-ad/'.$campaign->id) }}"><i class="fa fa-lg fa-edit"></i></a>
+                                            <a onclick="return window.confirm('Do you want to delete this ad?')" href="{{ url('/campaign/delete-ad/'.$campaign->id) }}"><i class="fa fa-lg fa-trash p-l-r-10"></i></a>
+                                        @endif
+                                    </td>
+                                </tr>
                         @else
                             <tr><td colspan="7">You currently have no advert campaigns!</td></tr>
                         @endif
