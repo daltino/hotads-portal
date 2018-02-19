@@ -223,7 +223,7 @@ class CampaignController extends Controller
             // Do something with the response
             $json = json_decode($response, true);
             foreach($json['items'] as $subscriber){
-                if($subscriber['email']){
+                if($subscriber['email'] || $subscriber['phone']){
                     array_push($users,$subscriber);
                 }
             }
