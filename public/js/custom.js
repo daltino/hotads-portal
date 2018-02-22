@@ -8,10 +8,26 @@ function init(){
     $('.collapse').on('hide.bs.collapse', function () {
         console.log('working');
     });
+    var today = new Date();
     $('#userTable').DataTable({
         dom: 'Bfrtip',
         buttons: [
-            'copy', 'csv', 'excel', 'pdf'
+            'copy', 'csv',
+            {
+                extend: 'excel',
+                title: 'Axa BonusLife Free WiFi Subscribers',
+                messageTop: 'Generated on ' + today.toString
+            },
+            {
+                extend: 'pdf',
+                title: 'Axa BonusLife Free WiFi Subscribers',
+                messageTop: 'Generated on ' + today.toString
+            },
+            {
+                extend: 'print',
+                title: 'Axa BonusLife Free WiFi Subscribers',
+                messageTop: 'Generated on ' + today.toString
+            }
         ]
     });
 }
