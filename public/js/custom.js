@@ -8,5 +8,10 @@ function init(){
     $('.collapse').on('hide.bs.collapse', function () {
         console.log('working');
     });
-    $('#userTable').DataTable();
+    $('#userTable').DataTable({
+        dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf'
+        ]
+    });
 }
