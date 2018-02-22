@@ -8,25 +8,27 @@ function init(){
     $('.collapse').on('hide.bs.collapse', function () {
         console.log('working');
     });
-    var today = new Date();
+    var today = moment().format('MMMM Do YYYY, h:mm:ss a');
+    var location = $('.location').html();
     $('#userTable').DataTable({
         dom: 'Bfrtip',
+        responsive: true,
         buttons: [
             'copy', 'csv',
             {
                 extend: 'excel',
-                title: 'Axa BonusLife Free WiFi Subscribers',
-                messageTop: 'Generated on ' + today.toString
+                title: location + ' Free WiFi Subscribers',
+                messageTop: 'Generated on ' + today
             },
             {
                 extend: 'pdf',
-                title: 'Axa BonusLife Free WiFi Subscribers',
-                messageTop: 'Generated on ' + today.toString
+                title: location + ' Free WiFi Subscribers',
+                messageTop: 'Generated on ' + today
             },
             {
                 extend: 'print',
-                title: 'Axa BonusLife Free WiFi Subscribers',
-                messageTop: 'Generated on ' + today.toString
+                title: location + ' Free WiFi Subscribers',
+                messageTop: 'Generated on ' + today
             }
         ]
     });

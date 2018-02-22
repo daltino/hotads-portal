@@ -77,6 +77,7 @@
 	<!-- Scripts -->
 	<script src="{{ asset('js/jquery-2.1.0.min.js') }}"></script>
 	<script src="{{ asset('bootstrap/js/bootstrap.min.js') }}"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>
 	<script src="{{ asset('js/custom.js') }}"></script>
 	<script src="{{ asset('lightbox2-master/dist/js/lightbox.min.js') }}"></script>
 	<script src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>

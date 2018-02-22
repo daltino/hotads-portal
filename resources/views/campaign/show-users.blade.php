@@ -9,8 +9,8 @@
                 <table class="table" id="userTable">
                     <thead>
                     <tr>
-                        <th>#</th>
-                        <th>Location</th>
+                        <th class="hidden-xs">#</th>
+                        <th class="hidden-xs">Location</th>
                         <th>Email Address</th>
                         <th>Phone</th>
                         <th>Registration Date</th>
@@ -21,10 +21,10 @@
                     <tbody>
                     {{--{{ dd($users) }}--}}
                     @if(count($users) > 0)
-                        @foreach($users as $user)
+                        @foreach($users as $key=>$user)
                             <tr  class="idea_row">
-                                <td></td>
-                                <td class="">{{ $location->name }}</td>
+                                <td class="hidden-xs">{{ ++$key }}</td>
+                                <td class="location hidden-xs">{{ $location->name }}</td>
                                 <td class="">
                                     {{ $user['email'] }}
                                 </td>
