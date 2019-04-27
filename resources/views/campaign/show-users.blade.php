@@ -4,7 +4,8 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-1">
-                <h3>Your Ad Campaigns</h3>
+                <h3>Your Subscribers
+                </h3>
                 <br/><br/>
                 <table class="table" id="userTable">
                     <thead>
